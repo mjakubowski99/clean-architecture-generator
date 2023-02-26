@@ -1,0 +1,37 @@
+{
+  "name": "devpark/clean-architecture",
+  "authors": [
+    {
+      "name": "Michał Jakubowski",
+      "email": "jakubowskimichal1210@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Devpark\\CleanArchitecture\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Devpark\\CleanArchitecture\\Tests\\": "tests/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Devpark\\CleanArchitecture\\CleanArchitectureServiceProvider"
+      ]
+    }
+  },
+  "require": {
+    "php": "^8.0",
+    "illuminate/support": "^9.0"
+  },
+  "require-dev": {
+    "orchestra/testbench": "7.0",
+    "friendsofphp/php-cs-fixer": "^3.14",
+    "nunomaduro/collision": "^6.2"
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}

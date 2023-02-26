@@ -1,0 +1,41 @@
+<?php
+
+declare(strict_types=1);
+
+namespace {{$namespace}}
+
+use Illuminate\Foundation\Application;
+use Illuminate\Support\Arr;
+
+class DomainServiceFactory
+{
+    protected array $bindings = [];
+
+    public function __construct(
+        private readonly Application $app
+    ) {
+    }
+
+    /**
+     * @template T
+     *
+     * @param class-string<T> $interface
+     *
+     * @return T
+     */
+    public function create(string $interface, array $parameters = []): mixed
+    {
+        $service_class = Arr::get($this->bindings, $interface);
+
+        try {
+            if (!$service_class) {
+                throw new \RuntimeException(__('No domain service is bound to interface.'));
+            }
+
+            return $this->app->make($service_class);
+
+        } catch (\Throwable $throwable) {
+            throw new DomainServiceException($interface, $parameters, $throwable);
+        }
+    }
+}

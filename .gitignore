@@ -1,0 +1,14 @@
+/vendor
+.env
+.env.ci
+.env.backup
+.env.testing
+.phpunit.result.cache
+docker-compose.override.yml
+/.idea
+/.vscode
+.php-cs-fixer.php
+.php-cs-fixer.cache
+phpstan.neon
+.phpstorm.meta.php
+/auth.json

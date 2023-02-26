@@ -1,0 +1,13 @@
+<?php
+
+declare(strict_types=1);
+
+namespace {{$namespace}};
+{{$result_import}}
+class {{$class}}
+{
+    public function {{$method}}(): {{$result}}
+    {
+
+    }
+}

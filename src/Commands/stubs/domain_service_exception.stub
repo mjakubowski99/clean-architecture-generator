@@ -1,0 +1,34 @@
+<?php
+
+declare(strict_types=1);
+
+namespace {{$namespace}}
+
+use Throwable;
+use App\Exceptions\AppException;
+
+class DomainServiceException extends AppException
+{
+    public string $causer;
+    public array $causer_parameters = [];
+
+    public function __construct(string $causer, array $causer_parameters = [], Throwable $previous = null)
+    {
+        $this->causer = $causer;
+        $this->causer_parameters = $causer_parameters;
+
+        $message = __('Domain service exception occurred.');
+
+        parent::__construct($message, $previous);
+    }
+
+    public function getCauser(): string
+    {
+        return $this->causer;
+    }
+
+    public function getCauserParameters(): array
+    {
+        return $this->causer_parameters;
+    }
+}
